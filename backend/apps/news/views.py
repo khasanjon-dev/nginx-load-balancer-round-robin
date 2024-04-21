@@ -16,6 +16,5 @@ class NewsModelViewSet(ModelViewSet):
 
     @action(['get'], False, 'balance', serializer_class=NoneSerializer)
     def balance(self, request):
-        # result = {gethostname(): 0}
         count[gethostname()] += 1
         return Response({"message": f"{gethostname()} {count}"})
