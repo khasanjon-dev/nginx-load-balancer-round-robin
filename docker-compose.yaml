@@ -8,8 +8,6 @@ services:
     entrypoint: /app/devops/backend/entrypoint.sh
     env_file:
       - ./.env
-    # ports:
-    #   - "8000:8000"
     expose:
       - "8000"
     volumes:
