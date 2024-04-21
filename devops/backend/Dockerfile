@@ -7,14 +7,8 @@ WORKDIR /app
 ADD /backend /app/backend
 ADD /devops /app/devops
 
-COPY /devops/backend/entrypoint.sh /app/devops/backend
-
 RUN apt-get update && \
     apt-get install -y netcat
 RUN pip install --upgrade pip
 RUN #pip install -r /app/backend/requirements.txt --no-cache-dir
 RUN --mount=type=cache,id=custom-pip,target=/root/.cache/pip pip install -r /app/backend/requirements.txt
-RUN chmod +x /app/devops/backend/entrypoint.sh
-ENTRYPOINT ["/app/devops/backend/entrypoint.sh"]
-
-

@@ -2,12 +2,14 @@ import os
 import sys
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.append(os.path.join(BASE_DIR, '../apps'))
+load_dotenv()
+SECRET_KEY = os.getenv('SECRET_KEY')
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
-
-DEBUG = bool(os.environ.get('DEBUG'))
+DEBUG = bool(os.getenv('DEBUG'))
 
 ALLOWED_HOSTS = ['*']
 
@@ -57,11 +59,11 @@ WSGI_APPLICATION = 'root.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'HOST': os.environ.get('DB_HOST'),
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USERNAME'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'PORT': os.environ.get('DB_PORT')
+        'HOST': os.getenv('DB_HOST'),
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USERNAME'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'PORT': os.getenv('DB_PORT')
     }
 }
 
@@ -89,7 +91,7 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '../', 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, '../', 'staticfiles/')
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '../', 'media/')

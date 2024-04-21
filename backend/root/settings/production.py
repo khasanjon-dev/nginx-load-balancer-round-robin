@@ -1,3 +1,3 @@
 from ..settings import *  # noqa
 
-DEBUG = False
+DEBUG = True

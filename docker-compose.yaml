@@ -1,33 +1,38 @@
 version: "3.9"
 services:
-  web:
-    container_name: web
+  nginx:
+    build: ./devops/nginx/.
+    depends_on:
+      - web_service
+    ports:
+      - "80:80"
+
+  web_service:
     build:
       context: .
       dockerfile: ./devops/backend/Dockerfile
     restart: unless-stopped
-#    entrypoint: /app/devops/backend/entrypoint.sh
+    entrypoint: /app/devops/backend/entrypoint.sh
     env_file:
       - ./.env
-    ports:
-      - "8000:8000"
     expose:
       - "8000"
     volumes:
       - static_volume:/app/backend/staticfiles
       - media_volume:/app/backend/media
-#      - .:/app
+      - .:/app
     depends_on:
       - db
   db:
-    container_name: db
     image: postgres:16.2-alpine3.19
     env_file:
       - ./.env
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     ports:
-      - "5433:5432"
+      - "5432:5432"
+    expose:
+      - "5432"
 volumes:
   postgres_data:
   static_volume:
