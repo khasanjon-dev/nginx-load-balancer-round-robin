@@ -16,6 +16,10 @@ services:
       - .:/app
     depends_on:
       - db
+    deploy:
+      mode: replicated
+      replicas: 3
+
 
   db:
     image: postgres:16.2-alpine3.19
