@@ -1,4 +1,2 @@
-make:
-	cd backend && python manage.py makemigrations
-mig:
-	cd backend && python manage.py migrate
+locust:
+	locust -f main.py --host http://0.0.0.0:8090
