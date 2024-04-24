@@ -12,3 +12,5 @@ RUN apt-get update && \
 RUN pip install --upgrade pip
 RUN #pip install -r /app/backend/requirements.txt --no-cache-dir
 RUN --mount=type=cache,id=custom-pip,target=/root/.cache/pip pip install -r /app/backend/requirements.txt
+
+ENTRYPOINT [ "/app/devops/backend/entrypoint.sh" ]

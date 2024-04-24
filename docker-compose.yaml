@@ -5,7 +5,6 @@ services:
       context: .
       dockerfile: ./devops/backend/Dockerfile
     restart: unless-stopped
-    entrypoint: /app/devops/backend/entrypoint.sh
     env_file:
       - ./.env
     expose:
