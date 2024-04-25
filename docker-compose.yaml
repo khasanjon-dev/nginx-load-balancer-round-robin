@@ -10,7 +10,7 @@ services:
     expose:
       - "8000"
     volumes:
-      - static_volume:/app/backend/staticfiles
+      - static_volume:/app/backend/static
       - media_volume:/app/backend/media
       - .:/app
     depends_on:
@@ -26,16 +26,18 @@ services:
       - ./.env
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    ports:
-      - "5432:5432"
     expose:
       - "5432"
   nginx:
-    build: ./devops/nginx/.
+    build:
+      context: .
+      dockerfile: ./devops/nginx/Dockerfile
     ports:
       - "80:80"
-    depends_on:
-      - web_service
+    volumes:
+      - static_volume:/app/backend/static
+      - media_volume:/app/backend/media
+
 volumes:
   postgres_data:
   static_volume:
