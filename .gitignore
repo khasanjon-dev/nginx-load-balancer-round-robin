@@ -110,3 +110,4 @@ venv*
 *venv
 *staticfiles*
 *media*
+backend/static
