@@ -22,5 +22,5 @@ python manage.py collectstatic --no-input
 # locust -f locust.py --host http://0.0.0.0:8090 &
 
 echo 'Starting Gunicorn server...'
-exec gunicorn root.wsgi:application --bind 0.0.0.0:8000 --workers 15 --thread 
+exec gunicorn root.wsgi:application --bind 0.0.0.0:8000 --workers 15 --thread 100
 # python manage.py runserver 0.0.0.0:8000
