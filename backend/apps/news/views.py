@@ -9,6 +9,7 @@ from .serializers import NewsModelSerializer, NoneSerializer
 
 count = 0
 
+
 class NewsModelViewSet(ModelViewSet):
     queryset = News.objects.all()
     serializer_class = NewsModelSerializer
@@ -17,6 +18,4 @@ class NewsModelViewSet(ModelViewSet):
     def counter(self, request):
         global count
         count += 1
-        return Response({
-            gethostname(): count
-        })
+        return Response({gethostname(): count})
