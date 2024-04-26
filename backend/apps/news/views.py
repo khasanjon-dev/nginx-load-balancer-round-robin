@@ -7,8 +7,7 @@ from rest_framework.viewsets import ModelViewSet
 from .models import News
 from .serializers import NewsModelSerializer, NoneSerializer
 
-count = {}
-
+count = 0
 
 class NewsModelViewSet(ModelViewSet):
     queryset = News.objects.all()
@@ -16,5 +15,8 @@ class NewsModelViewSet(ModelViewSet):
 
     @action(detail=False, methods=['get'], url_path='counter', serializer_class=NoneSerializer)
     def counter(self, request):
-
-        return Response()
+        global count
+        count += 1
+        return Response({
+            gethostname(): count
+        })
