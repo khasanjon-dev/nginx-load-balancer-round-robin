@@ -9,9 +9,9 @@ done
 
 echo 'PostgreSQL started'
 # Run Locust in the background
-echo 'Starting Locust...'
-pwd
-locust -f locust.py --host 0.0.0.0:8090 &
+# echo 'Starting Locust...'
+# pwd
+# locust -f locust.py --host 0.0.0.0:8090 &
 
 cd /app/backend
 

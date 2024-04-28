@@ -5,8 +5,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 
 WORKDIR /app
 ADD /backend /app/backend
-ADD /devops /app/devops
-ADD locust.py /app
+ADD /devops/backend /app/devops/backend
 
 RUN apt-get update && \
     apt-get install -y netcat
