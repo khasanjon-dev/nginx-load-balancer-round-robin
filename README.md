@@ -1,5 +1,5 @@
 ### Env variables
-```shell
+```bash
 # WEB
 DEBUG=True
 SECRET_KEY=django-insecure
@@ -20,13 +20,18 @@ POSTGRES_DB=news
 
 > step 1
 
-```bash
+```shell
 git clone https://github.com/khasanjon-dev/nginx-load-balancer-round-robin.git
 ```
 > step 2
-```bash
+```shell
+cd nginx-load-balancer-round-robin
+```
+> step 3
+```shell
 docker compose up --build
 ```
+
 
 # Technologies used
 
@@ -40,5 +45,6 @@ docker compose up --build
 * ```Django```
 * ```DjangoRestFramework```
 * ```Docker```
+* ```docker compose```
 * ```PostgreSQL```
 * ```Nginx```
