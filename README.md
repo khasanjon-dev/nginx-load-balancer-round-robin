@@ -1,9 +1,9 @@
 ### Env variables
-```python
+```shell
 # WEB
 DEBUG=True
 SECRET_KEY=django-insecure
-DJANGO_SETTINGS_MODULE=root.settings.development
+DJANGO_SETTINGS_MODULE=root.settings
 # DATABASE
 DB_HOST=db
 DB_NAME=news
@@ -16,7 +16,7 @@ POSTGRES_PASSWORD=helloworld
 POSTGRES_DB=news
 ```
 
-# Running project in local
+# Run the project
 
 > step 1
 
@@ -25,11 +25,10 @@ git clone https://github.com/khasanjon-dev/nginx-load-balancer-round-robin.git
 ```
 > step 2
 ```bash
-docker compose up --bu
+docker compose up --build
 ```
 
 # Technologies used
-
 
 <p>
   <a>
@@ -37,8 +36,9 @@ docker compose up --bu
   </a>
 </p>
 
-* Django
-* DjangoRestFramework
-* Docker
-* PostgreSQL
-* Nginx
+* ```Python```
+* ```Django```
+* ```DjangoRestFramework```
+* ```Docker```
+* ```PostgreSQL```
+* ```Nginx```
