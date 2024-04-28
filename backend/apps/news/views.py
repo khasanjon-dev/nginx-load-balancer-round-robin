@@ -7,7 +7,9 @@ from rest_framework.viewsets import ModelViewSet
 from .models import News
 from .serializers import NewsModelSerializer, NoneSerializer
 
-count = 0
+counter = {}
+if gethostname() not in counter:
+    counter[gethostname()] = 1
 
 
 class NewsModelViewSet(ModelViewSet):
@@ -16,6 +18,8 @@ class NewsModelViewSet(ModelViewSet):
 
     @action(detail=False, methods=['get'], url_path='counter', serializer_class=NoneSerializer)
     def counter(self, request):
-        global count
-        count += 1
-        return Response({gethostname(): count})
+        global counter
+
+        counter[gethostname()] += 1
+
+        return Response(counter)

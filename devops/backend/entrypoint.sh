@@ -8,6 +8,10 @@ while ! nc -z $DB_HOST $DB_PORT; do
 done
 
 echo 'PostgreSQL started'
+# Run Locust in the background
+echo 'Starting Locust...'
+pwd
+locust -f locust.py --host 0.0.0.0:8090 &
 
 cd /app/backend
 
@@ -17,10 +21,6 @@ python manage.py migrate
 echo 'Collecting static files...'
 python manage.py collectstatic --no-input
 
-# Run Locust in the background
-# echo 'Starting Locust...'
-# locust -f locust.py --host http://0.0.0.0:8090 &
 
 echo 'Starting Gunicorn server...'
-exec gunicorn root.wsgi:application --bind 0.0.0.0:8000 --workers 3 --threads 3
-# python manage.py runserver 0.0.0.0:8000
+exec gunicorn root.wsgi:application --bind 0.0.0.0:8000 --workers 6 --threads 10

@@ -9,10 +9,10 @@ services:
       - ./.env
     expose:
       - "8000"
+      - "8089"
     volumes:
       - static_volume:/app/backend/static
       - media_volume:/app/backend/media
-      - .:/app
     depends_on:
       - db
     deploy:
@@ -30,12 +30,14 @@ services:
       - "5432:5432"
     expose:
       - "5432"
+
   nginx:
     build:
       context: .
       dockerfile: ./devops/nginx/Dockerfile
     ports:
       - "80:80"
+      - "8090:8090"
     volumes:
       - static_volume:/app/backend/static
       - media_volume:/app/backend/media
