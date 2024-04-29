@@ -18,12 +18,13 @@ POSTGRES_DB=news
 
 # Run the project
 
-> step 1
-
+> step 1:
+- **clone the project**
 ```shell
 git clone https://github.com/khasanjon-dev/nginx-load-balancer-round-robin.git
 ```
 > step 2
+- **cd project file**
 ```shell
 cd nginx-load-balancer-round-robin
 ```
@@ -32,6 +33,11 @@ cd nginx-load-balancer-round-robin
 docker compose up --build
 ```
 
+> step 4 
+- **open the new terminal and run this command for testing**
+```shell
+python tests.py
+```
 
 # Technologies used
 
