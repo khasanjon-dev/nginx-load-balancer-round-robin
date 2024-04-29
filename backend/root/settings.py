@@ -9,7 +9,7 @@ sys.path.append(os.path.join(BASE_DIR, 'apps'))
 load_dotenv()
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = True  # bool(os.getenv('DEBUG', 0))
+DEBUG = bool(os.getenv('DEBUG', 0))
 
 ALLOWED_HOSTS = ['*']
 
@@ -97,3 +97,4 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+print(DEBUG)

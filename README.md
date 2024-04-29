@@ -1,8 +1,9 @@
 ### Env variables
 ```bash
 # WEB
-DEBUG=True
-SECRET_KEY=django-insecure
+# DEBUG must be empty in production
+DEBUG=
+SECRET_KEY=django-insecure-hk8!j)66r7*oup29x9)n-8n+5l_ccuqcx7ondc(2v8o&r@zd
 DJANGO_SETTINGS_MODULE=root.settings
 # DATABASE
 DB_HOST=db
