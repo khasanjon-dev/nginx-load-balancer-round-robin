@@ -36,7 +36,7 @@ docker compose up --build
 > step 4 
 - **open the new terminal and run this command for testing**
 ```shell
-python tests.py
+python test.py
 ```
 
 # Technologies used
