@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-  web_service1:
+  web_service:
     build:
       context: .
       dockerfile: ./devops/backend/Dockerfile
@@ -8,43 +8,14 @@ services:
     env_file:
       - ./.env
     ports:
-      - "8001:8000"
+      - "8000"
     volumes:
       - static_volume:/app/backend/static
       - media_volume:/app/backend/media
     depends_on:
       - db
-  web_service2:
-    build:
-      context: .
-      dockerfile: ./devops/backend/Dockerfile
-    restart: unless-stopped
-    env_file:
-      - ./.env
-    ports:
-      - "8002:8000"
-    volumes:
-      - static_volume:/app/backend/static
-      - media_volume:/app/backend/media
-    depends_on:
-      - db
-
-  web_service3:
-    build:
-      context: .
-      dockerfile: ./devops/backend/Dockerfile
-    restart: unless-stopped
-    env_file:
-      - ./.env
-    ports:
-      - "8003:8000"
-    volumes:
-      - static_volume:/app/backend/static
-      - media_volume:/app/backend/media
-    depends_on:
-      - db
-
-
+    deploy:
+      replicas: 3
 
   db:
     image: postgres:16.2-alpine3.19
@@ -65,9 +36,9 @@ services:
       - static_volume:/app/backend/static
       - media_volume:/app/backend/media
     depends_on:
-      - web_service1
-      - web_service2
-      - web_service3
+      - web_service
+
+
 volumes:
   postgres_data:
   static_volume:
